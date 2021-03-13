@@ -72,10 +72,10 @@ export default class EmailCapture {
 		this.assets = new MRE.AssetContainer(this.context);
 		
 		// Materials
-		this.buttonMaterial = this.assets.createMaterial('buttonMaterial', {
-			color: { r: 180 / 255, g: 255 / 255, b: 0 / 255, a: 255 / 255 },
-			alphaMode: MRE.AlphaMode.Blend
-		});
+		//this.buttonMaterial = this.assets.createMaterial('buttonMaterial', {
+		//	color: { r: 180 / 255, g: 255 / 255, b: 0 / 255, a: 255 / 255 },
+		//	alphaMode: MRE.AlphaMode.Blend
+	//	});
 
 		// Meshes
 		this.buttonMesh = MRE.Actor.CreateFromLibrary(this.app.context, {
@@ -95,14 +95,19 @@ export default class EmailCapture {
 		// Create Button
 		this.position = { x: 0.0, y: 0.0, z: 0.0 }
 		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
-		this.buttonActor = MRE.Actor.Create(this.context, {
-			actor: { 
-				name: 'Signup Button', 
-				collider: { geometry: { shape: MRE.ColliderType.Auto} },
-				transform: { local: { position: this.position, rotation: this.rotation } },
-				appearance: { materialId: this.buttonMaterial.id, meshId: this.buttonMesh.id }
-			}
-		});
+		this.buttonActor = MRE.Actor.CreateFromLibrary(this.app.context, {
+            resourceId: "artifact:1691973763974823967",
+            actor: {
+                grabbable : false,
+                name: 'Email',
+                transform: {
+                    local: {
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 1, y: 1, z: 1 }
+                    }
+                }
+            }
+        });
 
 		// Add Text Label
 		this.position = { x: 0, y: .35, z: 0 }
