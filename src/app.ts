@@ -61,7 +61,7 @@ export default class EmailCapture {
 		this.EmailList.set(userId, emailAddress)
 		
 		// RETURN
-		return await user.prompt("Thank You: " + emailAddress + "\n\nA representitive from Derse will be in touch.");
+		return await user.prompt("You entered: " + emailAddress + "\n\nPrepare for SPAM fool! MWUAHAHA!!");
     }
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
