@@ -17,7 +17,7 @@ export default class EmailCapture {
 	
 	// Meshes
 	private buttonMesh: MRE.Mesh;
-	private buttonActor: MRE.Actor = null;
+	private buttonActor: MRE.Actor = 1691973763974823967;
 	private labelActor: MRE.Actor = null;
 	private labelText = "EMAIL DERSE FOR MORE INFO"
 
