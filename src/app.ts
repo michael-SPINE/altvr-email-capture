@@ -17,19 +17,7 @@ export default class EmailCapture {
 	
 	// Meshes
 	private buttonMesh: MRE.Mesh;
-	private buttonActor: MRE.Actor = MRE.Actor.CreateFromLibrary(this.app.context, {
-            resourceId: "artifact:1691973763974823967",
-            actor: {
-                grabbable : false,
-                name: 'Email',
-                transform: {
-                    local: {
-                        position: { x: 0.0, y: 0.0, z: 0.0 },
-                        scale: { x: 1, y: 1, z: 1 }
-                    }
-                }
-            }
-        });
+	private buttonActor: MRE.Actor = null;
 	private labelActor: MRE.Actor = null;
 	private labelText = "EMAIL DERSE FOR MORE INFO"
 
@@ -90,7 +78,19 @@ export default class EmailCapture {
 		});
 
 		// Meshes
-		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .15, .15, .15);
+		this.buttonMesh = MRE.Actor.CreateFromLibrary(this.app.context, {
+            resourceId: "artifact:1691973763974823967",
+            actor: {
+                grabbable : false,
+                name: 'Email',
+                transform: {
+                    local: {
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 1, y: 1, z: 1 }
+                    }
+                }
+            }
+        });
 		
 		// Create Button
 		this.position = { x: 0.0, y: 0.0, z: 0.0 }
