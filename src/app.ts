@@ -19,7 +19,7 @@ export default class EmailCapture {
 	private buttonMesh: MRE.Mesh;
 	private buttonActor: MRE.Actor = null;
 	private labelActor: MRE.Actor = null;
-	private labelText = "Click To Sign Up!"
+	private labelText = "EMAIL DERSE FOR MORE INFO"
 
 	/**
 	 * Context Constructor
