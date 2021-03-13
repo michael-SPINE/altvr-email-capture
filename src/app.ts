@@ -17,7 +17,7 @@ export default class EmailCapture {
 	
 	// Meshes
 	private buttonMesh: MRE.Mesh;
-	private buttonActor: MRE.Actor = MRE.Mesh = MRE.Actor.CreateFromLibrary(this.app.context, {
+	private buttonActor: MRE.Actor = MRE.Actor.CreateFromLibrary(this.app.context, {
             resourceId: "artifact:1691973763974823967",
             actor: {
                 grabbable : false,
