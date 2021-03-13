@@ -16,7 +16,8 @@ export default class EmailCapture {
 	private rotation: any = null
 	
 	// Meshes
-	private buttonMesh: MRE.Mesh = MRE.Actor.CreateFromLibrary(this.app.context, {
+	private buttonMesh: MRE.Mesh;
+	private buttonActor: MRE.Actor = MRE.Mesh = MRE.Actor.CreateFromLibrary(this.app.context, {
             resourceId: "artifact:1691973763974823967",
             actor: {
                 grabbable : false,
@@ -29,7 +30,6 @@ export default class EmailCapture {
                 }
             }
         });
-	private buttonActor: MRE.Actor = null;
 	private labelActor: MRE.Actor = null;
 	private labelText = "EMAIL DERSE FOR MORE INFO"
 
