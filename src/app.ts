@@ -64,7 +64,7 @@ export default class EmailCapture {
 
 		const newEmail = userId + " : " + emailAddress + "\r\n";
 
-		fs.appendFile('D:/.../altvr-email/public/emailList.txt', newEmail, function (err) {
+		fs.appendFile('D:\Git\altvr-email\public\emailList.txt', newEmail, function (err) {
             if (err) throw err;
         });
 		
