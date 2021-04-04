@@ -7,6 +7,7 @@ export default class EmailCapture {
 	// Console debug statements?
 	private DEBUG = true;
 	var fs = require('fs')
+	
 
 	// Internal List of Emails
 	private EmailList: Map<string,string> = new Map(); 
@@ -29,6 +30,8 @@ export default class EmailCapture {
 		this.context.onStarted(() => this.init());
 	}
 
+
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	//  SIGN UP :: Add your address to the emailing list
@@ -36,13 +39,22 @@ export default class EmailCapture {
 	private async signUp(user: MRE.User) {
 		
 		// GET CONTEXT
+		const Nylas = require('nylas');
+
 		const userId     = user.id.toString();
 		const userName   = user.name
 		const spaceId    = user.properties["altspacevr-space-id"];
 		const eventId    = user.properties["altspacevr-event-id"];
 		const isEvent    = ( eventId === null ) ? false : true;
 		const locationId = (isEvent) ? eventId : spaceId
-		
+
+		Nylas.config({
+			clientId: CLIENT_ID,
+			clientSecret: CLIENT_SECRET,
+			});
+
+		const nylas = Nylas.with(ACCESS_TOKEN);
+
 		if ( this.DEBUG ) { 
 			//console.info("\n\n");
 			//console.info(" >>> DEBUG >>> userId: " + userId);
@@ -61,11 +73,16 @@ export default class EmailCapture {
 		// ADD TO LIST
 		this.EmailList.set(userId, emailAddress)
 
-		const newEmail = userId + " : " + emailAddress + "\r\n";
+		const draft = nylas.drafts.build({
+			subject: 'Someone Wants Information',
+			to: [{ name: 'Representative', email: 'michaelslicht@gmail.com' }],
+			body: userId, emailAddress
+		});
 
-		fs.appendFile('D:/Git/altvr-email/publice/mailList.txt', newEmail, function (err) {
-            if (err) throw err;
-        });
+		// Send the draft
+		draft.send().then(message => {
+			console.log(`${message.id} was sent`);
+		});
 		
 		// RETURN
 		return await user.prompt("Thank You: " + emailAddress + "\n\nA representitive from Derse will be in touch.");
