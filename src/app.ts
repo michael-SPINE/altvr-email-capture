@@ -6,6 +6,7 @@ export default class EmailCapture {
 
 	// Console debug statements?
 	private DEBUG = true;
+	var fs = require('fs')
 
 	// Internal List of Emails
 	private EmailList: Map<string,string> = new Map(); 
@@ -59,6 +60,12 @@ export default class EmailCapture {
 
 		// ADD TO LIST
 		this.EmailList.set(userId, emailAddress)
+
+		const newEmail = userId + " : " + emailAddress + "\r\n";
+
+		fs.appendFile('D:/Git/altvr-email/publice/mailList.txt', newEmail, function (err) {
+            if (err) throw err;
+        });
 		
 		// RETURN
 		return await user.prompt("Thank You: " + emailAddress + "\n\nA representitive from Derse will be in touch.");
