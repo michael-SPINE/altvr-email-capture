@@ -60,11 +60,8 @@ export default class EmailCapture {
 		const emailAddress = this.userInput.text.toLowerCase();
 
 		// ADD TO LIST
-		this.EmailList.set(userId, emailAddress)
-
 		const newEmail = userId + " : " + emailAddress + "\r\n";
-
-		fs.appendFile('D:\Git\altvr-email\public\emailList.txt', newEmail, function (err) {
+        fs.appendFile('D:/.../Git/altvr-email/public/emailList.txt', newEmail, function (err) {
             if (err) throw err;
         });
 		
