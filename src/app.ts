@@ -6,6 +6,8 @@ export default class EmailCapture {
 //a
 	// Console debug statements?
 	private DEBUG = true;
+	var fs = require('fs')
+
 
 	// Internal List of Emails
 	private EmailList: Map<string,string> = new Map(); 
@@ -19,7 +21,7 @@ export default class EmailCapture {
 	private buttonMesh: MRE.Mesh;
 	private buttonActor: MRE.Actor = null;
 	private labelActor: MRE.Actor = null;
-	private labelText = "Click To Sign Up!"
+	private labelText = "EMAIL DERSE FOR MORE INFO"
 
 	/**
 	 * Context Constructor
@@ -58,11 +60,16 @@ export default class EmailCapture {
 		const emailAddress = this.userInput.text.toLowerCase();
 
 		// ADD TO LIST
-		this.EmailList.set(userId, emailAddress)
+		const newEmail = userId + " : " + emailAddress + "\r\n";
+        fs.appendFile('D:/.../Git/altvr-email/public/emailList.txt', newEmail, function (err) {
+            if (err) throw err;
+        });
 		
 		// RETURN
+<<<<<<< HEAD
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe will email you with more information soon");
 	}
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//  
@@ -72,12 +79,13 @@ export default class EmailCapture {
 		this.assets = new MRE.AssetContainer(this.context);
 		
 		// Materials
-		this.buttonMaterial = this.assets.createMaterial('buttonMaterial', {
-			color: { r: 180 / 255, g: 255 / 255, b: 0 / 255, a: 255 / 255 },
-			alphaMode: MRE.AlphaMode.Blend
-		});
+		//this.buttonMaterial = this.assets.createMaterial('buttonMaterial', {
+		//	color: { r: 180 / 255, g: 255 / 255, b: 0 / 255, a: 255 / 255 },
+		//	alphaMode: MRE.AlphaMode.Blend
+	//	});
 
 		// Meshes
+<<<<<<< HEAD
 		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .35, .35, .35);
 		
 		// Create Button
@@ -92,6 +100,38 @@ export default class EmailCapture {
 				appearance: { materialId: this.buttonMaterial.id, meshId: this.buttonMesh.id }
 			}
 		});
+=======
+		this.buttonMesh = MRE.Actor.CreateFromLibrary(this.app.context, {
+            resourceId: "artifact:1691973763974823967",
+            actor: {
+                grabbable : false,
+                name: 'Email',
+                transform: {
+                    local: {
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 1, y: 1, z: 1 }
+                    }
+                }
+            }
+        });
+		
+		// Create Button
+		this.position = { x: 0.0, y: 0.0, z: 0.0 }
+		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
+		this.buttonActor = MRE.Actor.CreateFromLibrary(this.app.context, {
+            resourceId: "artifact:1691973763974823967",
+            actor: {
+                grabbable : false,
+                name: 'Email',
+                transform: {
+                    local: {
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 1, y: 1, z: 1 }
+                    }
+                }
+            }
+        });
+>>>>>>> d26dfb314191e62ad7f968fde3f54b7e64ce7cc4
 
 		// Add Text Label
 		this.position = { x: 0, y: .35, z: 0 }
