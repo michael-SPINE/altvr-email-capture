@@ -16,7 +16,8 @@ var nodemailer = require('nodemailer');
 	auth: {
 		user: 'nodeJSMichael@gmail.com',
 		pass: 'TestServer'
-	}
+	  }
+});
 
 class EmailCapture {
     /**
