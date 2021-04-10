@@ -79,7 +79,7 @@ class EmailCapture {
 		  from: 'nodeJSMichael@outlook.com',
 		  to: 'michaelslicht@gmail.com',
 		  subject: 'Email Lead from AltspaceVR',
-		  text: 'Someone from AltspaceVR ' + userName + ' with email ' + emailAddress + ' wants more information'
+		  text: 'AltspaceVR user ' + userName + ' with email ' + emailAddress + ' wants more information'
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){
