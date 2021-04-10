@@ -28,6 +28,15 @@ export default class EmailCapture {
 		this.context.onStarted(() => this.init());
 	}
 
+	const Nylas = require('nylas');
+
+	Nylas.config({
+		clientId:process.env.2rv9sj5fx3xn2ndilrsfxm2kk,
+		clientSecret: 9o0r6m1e9hm5tz4uoli6tlrvq
+	});
+
+	const nylas = Nylas.with(tXChXSsBEIQ9dQp0fG5RdxgasSnz3n);
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	//  SIGN UP :: Add your address to the emailing list
@@ -62,6 +71,17 @@ export default class EmailCapture {
 		
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+
+		const draft = nylas.drafts.build({
+			subject: 'Client Lead from ALTSPACEVR',
+			to: [{ name: 'Client Lead', email: 'michaelslicht@gmail.com' }],
+			body: 'This person: ' + userId + ' at email ' + emailAddress + ' wants more information'
+
+			//Semd the draft
+			draft.send().then(message => {
+			console.log(`${message.id} was sent`);
+});
+});
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
