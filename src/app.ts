@@ -31,13 +31,16 @@ export default class EmailCapture
 
 	var nodemailer = require('nodemailer');
 
-	var transporter = nodemailer.createTransport({
-	service: 'gmail',
-	auth: {
-		user: 'nodeJSMichael@gmail.com',
-		pass: 'TestServer'
-	}
-});
+	var transporter = nodemailer.createTransport
+	({
+		service: 'gmail',
+		auth:
+		{
+			user: 'nodeJSMichael@gmail.com',
+			pass: 'TestServer'
+		}
+	});
+
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
