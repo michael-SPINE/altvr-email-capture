@@ -6,6 +6,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+
 Object.defineProperty(exports, "__esModule", { value: true });
 const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
 
@@ -75,9 +76,9 @@ class EmailCapture {
         // RETURN
         return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
-        console.log('Send the draft now'); //BUGTESTING
+        console.log("Send the draft now"); //BUGTESTING
 		
-        		var mailOptions = {
+        var mailOptions = {
 		  from: 'nodeJSMichael@gmail.com',
 		  to: 'michaelslicht@gmail.com',
 		  subject: 'Sending Email using Node.js',
