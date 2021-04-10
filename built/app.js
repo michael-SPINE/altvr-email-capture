@@ -78,8 +78,8 @@ class EmailCapture {
 		var mailOptions = {
 		  from: 'nodeJSMichael@outlook.com',
 		  to: 'michaelslicht@gmail.com',
-		  subject: 'Sending Email using Node.js',
-		  text: 'That was easy!'
+		  subject: 'Email Lead from AltspaceVR',
+		  text: 'Someone from AltspaceVR ' +  userId + 'with email ' + emailAddress + 'wants to contact you'
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){
