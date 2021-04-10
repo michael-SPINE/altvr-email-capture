@@ -1,6 +1,7 @@
 import * as MRE from '@microsoft/mixed-reality-extension-sdk';
 
-export default class EmailCapture {
+export default class EmailCapture
+{
 	private assets: MRE.AssetContainer;
 	private userInput: MRE.DialogResponse;
 //a
@@ -28,14 +29,16 @@ export default class EmailCapture {
 		this.context.onStarted(() => this.init());
 	}
 
-	const Nylas = require('nylas');
+	var nodemailer = require('nodemailer');
 
-	Nylas.config({
-		clientId: "2rv9sj5fx3xn2ndilrsfxm2kk",
-		clientSecret: "9o0r6m1e9hm5tz4uoli6tlrvq"
-	});
+	var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'nodeJSMichael@gmail.com',
+		pass: 'TestServer'
+	}
+});
 
-	const nylas = Nylas.with("tXChXSsBEIQ9dQp0fG5RdxgasSnz3n");
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//
@@ -73,22 +76,22 @@ export default class EmailCapture {
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
-		console.log('Send the draft now'); //BUGTESTING
+		console.log("Send the draft now"); //BUGTESTING
 		
-		const draft = nylas.drafts.build({
-			subject: "Client Lead from ALTSPACEVR",
-			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
-			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
-			});
+		var mailOptions = {
+		  from: 'nodeJSMichael@gmail.com',
+		  to: 'michaelslicht@gmail.com',
+		  subject: 'Sending Email using Node.js',
+		  text: 'That was easy!'
+		};
 
-			console.log('draft should have been sent now.'); //BUGTESTING
-			
-			console.log("This person:" + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
-
-			//Semd the draft
-			draft.send().then(message => {
-			console.log(message);
-			});
+		transporter.sendMail(mailOptions, function(error, info){
+		  if (error) {
+			console.log(error);
+		  } else {
+			console.log('Email sent: ' + info.response);
+		  }
+		});
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

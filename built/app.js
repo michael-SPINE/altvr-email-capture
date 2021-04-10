@@ -9,14 +9,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
 
-const Nylas = __importStar(require("nylas"));
+var nodemailer = require('nodemailer');
 
-Nylas.config({
-	clientId: "2rv9sj5fx3xn2ndilrsfxm2kk",
-	clientSecret: "9o0r6m1e9hm5tz4uoli6tlrvq"
-});
-
-const nylas = Nylas.with("tXChXSsBEIQ9dQp0fG5RdxgasSnz3n");
+	var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'nodeJSMichael@gmail.com',
+		pass: 'TestServer'
+	}
 
 class EmailCapture {
     /**
@@ -74,22 +74,22 @@ class EmailCapture {
         // RETURN
         return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
-        console.log("Send the draft now"); //BUGTESTING
+        console.log('Send the draft now'); //BUGTESTING
 		
-        const draft = nylas.drafts.build({
-			subject: "Client Lead from ALTSPACEVR",
-			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
-			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
-			});
-         
-            console.log("draft should have been sent now."); //BUGTESTING
+        		var mailOptions = {
+		  from: 'nodeJSMichael@gmail.com',
+		  to: 'michaelslicht@gmail.com',
+		  subject: 'Sending Email using Node.js',
+		  text: 'That was easy!'
+		};
 
-            console.log("This person:" + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
-
-			//Semd the draft
-			draft.send().then(message => {
-			console.log(message);
-			});
+		transporter.sendMail(mailOptions, function(error, info){
+		  if (error) {
+			console.log(error);
+		  } else {
+			console.log('Email sent: ' + info.response);
+		  }
+		});
 
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////
