@@ -73,15 +73,15 @@ export default class EmailCapture {
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
 		const draft = nylas.drafts.build({
-			subject: 'Client Lead from ALTSPACEVR',
-			to: [{ name: 'Client Lead', email: 'michaelslicht@gmail.com' }],
-			body: 'This person: ' + userId + ' at email ' + emailAddress + ' wants more information'
+			subject: "Client Lead from ALTSPACEVR",
+			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
+			body: "This person: " + userId + " at email " + emailAddress + " wants more information"
+			});
 
 			//Semd the draft
 			draft.send().then(message => {
-			console.log(`${message.id} was sent`);
-});
-});
+			console.log(message);
+			});
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
