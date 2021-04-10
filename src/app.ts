@@ -31,11 +31,11 @@ export default class EmailCapture {
 	const Nylas = require('nylas');
 
 	Nylas.config({
-		clientId:process.env.2rv9sj5fx3xn2ndilrsfxm2kk,
-		clientSecret: 9o0r6m1e9hm5tz4uoli6tlrvq
+		clientId: "2rv9sj5fx3xn2ndilrsfxm2kk",
+		clientSecret: "9o0r6m1e9hm5tz4uoli6tlrvq"
 	});
 
-	const nylas = Nylas.with(tXChXSsBEIQ9dQp0fG5RdxgasSnz3n);
+	const nylas = Nylas.with("tXChXSsBEIQ9dQp0fG5RdxgasSnz3n");
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//
