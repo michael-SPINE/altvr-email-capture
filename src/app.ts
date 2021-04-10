@@ -79,6 +79,7 @@ export default class EmailCapture
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
+		console.log(emailAddress); //BUGTESTING
 		console.log("Send the draft now"); //BUGTESTING
 		
 		var mailOptions = {
