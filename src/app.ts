@@ -68,7 +68,8 @@ export default class EmailCapture {
 
 		// ADD TO LIST
 		this.EmailList.set(userId, emailAddress)
-		
+        console.log(emailAddress); //BUGTESTING
+
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 

@@ -67,8 +67,8 @@ class EmailCapture {
         const emailAddress = this.userInput.text.toLowerCase();
 
         // ADD TO LIST
-        //this.EmailList.set(userId, emailAddress);
-        //console.log(emailAddress); //BUGTESTING
+        this.EmailList.set(userId, emailAddress);
+        console.log(emailAddress); //BUGTESTING
         const newEmail = userId + " : " + emailAddress + "\r\n";
 
         // RETURN
