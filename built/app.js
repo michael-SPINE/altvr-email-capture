@@ -73,8 +73,7 @@ class EmailCapture {
         console.log(emailAddress); //BUGTESTING
         const newEmail = userId + " : " + emailAddress + "\r\n";
 
-        // RETURN
-        return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+
 
         console.log(emailAddress); //BUGTESTING
         console.log("Send the draft now"); //BUGTESTING
@@ -93,6 +92,9 @@ class EmailCapture {
 			console.log('Email sent: ' + info.response);
 		  }
 		});
+
+        // RETURN
+        return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////

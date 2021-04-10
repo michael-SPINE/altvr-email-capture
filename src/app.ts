@@ -76,10 +76,6 @@ export default class EmailCapture
 		this.EmailList.set(userId, emailAddress)
         console.log(emailAddress); //BUGTESTING
 
-		// RETURN
-		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
-
-		console.log(emailAddress); //BUGTESTING
 		console.log("Send the draft now"); //BUGTESTING
 		
 		var mailOptions = {
@@ -96,6 +92,9 @@ export default class EmailCapture
 			console.log('Email sent: ' + info.response);
 		  }
 		});
+
+		// RETURN
+		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
