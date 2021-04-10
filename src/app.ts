@@ -76,7 +76,8 @@ export default class EmailCapture {
 		const draft = nylas.drafts.build({
 			subject: "Client Lead from ALTSPACEVR",
 			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
-			body: "This person: " + userId + " at email " + emailAddress + " wants more information"
+			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
+			console.log("This person: " + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
 			});
 
 			//Semd the draft
