@@ -8,6 +8,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
+
+const Nylas = __importStar(require("nylas"));
+
+Nylas.config({
+	clientId:process.env.2rv9sj5fx3xn2ndilrsfxm2kk,
+	clientSecret: 9o0r6m1e9hm5tz4uoli6tlrvq
+});
+
+const nylas = Nylas.with(tXChXSsBEIQ9dQp0fG5RdxgasSnz3n);
+
 class EmailCapture {
     /**
      * Context Constructor
@@ -27,14 +37,7 @@ class EmailCapture {
         this.context.onStarted(() => this.init());654
     }
 
-	const Nylas = require('nylas');
 
-	Nylas.config({
-		clientId:process.env.2rv9sj5fx3xn2ndilrsfxm2kk,
-		clientSecret: 9o0r6m1e9hm5tz4uoli6tlrvq
-	});
-
-	const nylas = Nylas.with(tXChXSsBEIQ9dQp0fG5RdxgasSnz3n);
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
