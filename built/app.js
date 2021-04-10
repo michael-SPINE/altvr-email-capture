@@ -9,6 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
 
+const Nylas = __importStar(require("nylas"));
 var nodemailer = require('nodemailer');
 
 Nylas.config({
@@ -72,6 +73,8 @@ class EmailCapture {
         const newEmail = userId + " : " + emailAddress + "\r\n";
 
 
+        console.log('Send the draft now'); //BUGTESTING
+		
         const draft = nylas.drafts.build({
 			subject: "Client Lead from ALTSPACEVR",
 			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
@@ -89,6 +92,7 @@ class EmailCapture {
 
         // RETURN
         return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+
 
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////
