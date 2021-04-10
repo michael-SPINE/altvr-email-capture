@@ -19,7 +19,7 @@
     "npm": ">=6.4.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test  specified\" && exit 1",
     "clean": "tsc --build --clean",
     "build": "tsc --build && eslint --ext .ts src",
     "build-only": "tsc --build",
