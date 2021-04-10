@@ -12,8 +12,8 @@ const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
 const Nylas = __importStar(require("nylas"));
 
 Nylas.config({
-	clientId: 2rv9sj5fx3xn2ndilrsfxm2kk,
-	clientSecret: 9o0r6m1e9hm5tz4uoli6tlrvq
+	clientId: "2rv9sj5fx3xn2ndilrsfxm2kk",
+	clientSecret: "9o0r6m1e9hm5tz4uoli6tlrvq"
 });
 
 const nylas = Nylas.with(tXChXSsBEIQ9dQp0fG5RdxgasSnz3n);
