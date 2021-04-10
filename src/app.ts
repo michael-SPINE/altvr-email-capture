@@ -3,7 +3,7 @@ import * as MRE from '@microsoft/mixed-reality-extension-sdk';
 export default class EmailCapture {
 	private assets: MRE.AssetContainer;
 	private userInput: MRE.DialogResponse;
-
+//a
 	// Console debug statements?
 	private DEBUG = true;
 
@@ -61,8 +61,8 @@ export default class EmailCapture {
 		this.EmailList.set(userId, emailAddress)
 		
 		// RETURN
-		return await user.prompt("You entered: " + emailAddress + "\n\nPrepare for SPAM fool! MWUAHAHA!!");
-    }
+		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	//  
@@ -78,11 +78,12 @@ export default class EmailCapture {
 		});
 
 		// Meshes
-		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .15, .15, .15);
+		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .35, .35, .35);
 		
 		// Create Button
 		this.position = { x: 0.0, y: 0.0, z: 0.0 }
-		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
+		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians,
+			0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
 		this.buttonActor = MRE.Actor.Create(this.context, {
 			actor: { 
 				name: 'Signup Button', 
@@ -94,20 +95,23 @@ export default class EmailCapture {
 
 		// Add Text Label
 		this.position = { x: 0, y: .35, z: 0 }
-		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
+		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians,
+			0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians)
 		this.labelActor = MRE.Actor.Create(this.context, {
 			actor: {
 				name: 'Button Label',
-				transform: { local: { position: this.position, rotation: this.rotation } },
-				text: { contents: this.labelText, justify: MRE.TextJustify.Center, anchor: MRE.TextAnchorLocation.MiddleCenter, color: { r: 255 / 255, g: 255 / 255, b: 255 / 255 }, height: 0.035 }
+				transform: { local: { position: this.position, rotation: this.rotation, scale: { x: 2, y: 2, z: 2 } } },
+				text: { contents: this.labelText, justify: MRE.TextJustify.Center,
+				anchor: MRE.TextAnchorLocation.MiddleCenter,
+				color: { r: 255 / 255, g: 255 / 255, b: 255 / 255 }, height: 0.035 }
 			}
 		});
 
 		// On click...
 		const buttonBehavior = this.buttonActor.setBehavior(MRE.ButtonBehavior);
-        buttonBehavior.onButton('released', (user: any) => {
+		buttonBehavior.onButton('released', (user: any) => {
 			// Trigger signUp() function
-            this.signUp(user);
+			this.signUp(user);
 		});
 		
 	}
