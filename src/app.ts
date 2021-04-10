@@ -73,12 +73,16 @@ export default class EmailCapture {
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
 
+		console.log("Send the draft now); //BUGTESTING
+		
 		const draft = nylas.drafts.build({
 			subject: "Client Lead from ALTSPACEVR",
 			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
 			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
 			});
 
+			console.log("draft should have been sent now."); //BUGTESTING
+			
 			console.log("This person:" + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
 
 			//Semd the draft
