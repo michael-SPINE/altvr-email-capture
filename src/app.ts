@@ -20,7 +20,7 @@ export default class EmailCapture
 	private buttonMesh: MRE.Mesh;
 	private buttonActor: MRE.Actor = null;
 	private labelActor: MRE.Actor = null;
-	private labelText = "Click To Sign Up!"
+	private labelText = "Click to get more infomation"
 
 	/**
 	 * Context Constructor
@@ -79,8 +79,8 @@ export default class EmailCapture
 		var mailOptions = {
 		  from: 'nodeJSMichael@outlook.com',
 		  to: 'michaelslicht@gmail.com',
-		  subject: 'Sending Email using Node.js',
-		  text: 'That was easy!'
+		  subject: 'Email Lead from AltspaceVR',
+		  text: 'Someone from AltspaceVR ' + userName + ' with email ' + emailAddress + ' wants more information'
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){

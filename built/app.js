@@ -34,7 +34,7 @@ class EmailCapture {
         this.rotation = null;
         this.buttonActor = null;
         this.labelActor = null;
-        this.labelText = "Click To Sign Up!";
+        this.labelText = "Click to get more infomation";
         this.context.onStarted(() => this.init());654
     }
 
@@ -79,7 +79,7 @@ class EmailCapture {
 		  from: 'nodeJSMichael@outlook.com',
 		  to: 'michaelslicht@gmail.com',
 		  subject: 'Email Lead from AltspaceVR',
-		  text: 'Someone from AltspaceVR ' +  userId + 'with email ' + emailAddress + 'wants to contact you'
+		  text: 'Someone from AltspaceVR ' + userName + ' with email ' + emailAddress + ' wants more information'
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){
