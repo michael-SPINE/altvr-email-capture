@@ -25,19 +25,20 @@ export default class EmailCapture
 	/**
 	 * Context Constructor
 	 */
-	constructor(private context: MRE.Context, private baseUrl: string) {
+	constructor(private context: MRE.Context, private baseUrl: string)
+	{
 		this.context.onStarted(() => this.init());
 	}
 
-	var nodemailer = require('nodemailer');
+		var nodemailer = require('nodemailer');
 
-	var transporter = nodemailer.createTransport({
-	service: 'gmail',
-	auth: {
-		user: 'nodeJSMichael@gmail.com',
-		pass: 'TestServer'
-	}
-});
+		var transporter = nodemailer.createTransport({
+		  service: 'outlook',
+		  auth: {
+			user: 'nodeJSMichael@outlook.com',
+			pass: 'TestServer'
+		  }
+		});
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,20 +76,20 @@ export default class EmailCapture
 
 		console.log("Send the draft now"); //BUGTESTING
 		
-		const draft = nylas.drafts.build({
-			subject: "Client Lead from ALTSPACEVR",
-			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
-			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
-			});
+		var mailOptions = {
+		  from: 'nodeJSMichael@outlook.com',
+		  to: 'michaelslicht@gmail.com',
+		  subject: 'Sending Email using Node.js',
+		  text: 'That was easy!'
+		};
 
-			console.log('draft should have been sent now.'); //BUGTESTING
-			
-			console.log("This person:" + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
-
-			//Semd the draft
-			draft.send().then(message => {
-			console.log(message);
-			});
+		transporter.sendMail(mailOptions, function(error, info){
+		  if (error) {
+			console.log(error);
+		  } else {
+			console.log('Email sent: ' + info.response);
+		  }
+		});
 
 					// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
