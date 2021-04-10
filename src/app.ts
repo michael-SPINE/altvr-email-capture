@@ -77,8 +77,9 @@ export default class EmailCapture {
 			subject: "Client Lead from ALTSPACEVR",
 			to: [{ name: "Client Lead", email: "michaelslicht@gmail.com" }],
 			body: "This person: " + userId + " at email " + emailAddress + " wants more information",
-			console.log("This person: " + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
 			});
+
+			console.log("This person:" + userId + " at email " + emailAddress + " wants more information"); //BUGTESTING
 
 			//Semd the draft
 			draft.send().then(message => {
