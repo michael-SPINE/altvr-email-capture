@@ -66,7 +66,7 @@ export default class EmailCapture
 		}
 
 		// PROMPT FOR EMAIL
-		this.userInput = await user.prompt("Enter your email address:", true);
+		this.userInput = await user.prompt("CLICK TO CONTACT KHB:", true);
 		if (! this.userInput.submitted || this.userInput.text === '' ) { return; }
 		const emailAddress = this.userInput.text.toLowerCase();
 
@@ -92,7 +92,7 @@ export default class EmailCapture
 		});
 
 					// RETURN
-		return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+		return await user.prompt("Hello: " + emailAddress + "\n\nKHB Construction will get back to you soon.");
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,6 +108,7 @@ export default class EmailCapture
 			alphaMode: MRE.AlphaMode.Blend
 		});
 
+		/*
 		// Meshes
 		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .35, .35, .35);
 		
@@ -123,6 +124,28 @@ export default class EmailCapture
 				appearance: { materialId: this.buttonMaterial.id, meshId: this.buttonMesh.id }
 			}
 		});
+
+		*/
+
+		this.buttonActor = MRE.Actor.CreateFromGltf(new MRE.AssetContainer(this.context),
+		{
+			uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1720909420273075055/garbagemaya.glb`,
+            colliderType: 'box',
+            actor:
+			{
+                name: 'Garbage',
+                transform:
+				{
+                    local:
+					{
+                        position: { x: 0, y: 0, z: 0 },
+                        scale: { x: 0.01, y: 0.01, z: 0.01 },
+                        rotation: {y:0}
+                    }
+                },
+                grabbable: true
+            }
+        });
 
 		// Add Text Label
 		this.position = { x: 0, y: .35, z: 0 }

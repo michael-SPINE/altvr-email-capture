@@ -63,7 +63,7 @@ class EmailCapture {
             //console.info(user.properties);
         }
         // PROMPT FOR EMAIL
-        this.userInput = await user.prompt("Enter your email address:", true);
+        this.userInput = await user.prompt("CLICK TO CONTACT KHB:", true);
         if (!this.userInput.submitted || this.userInput.text === '') { return; }
         const emailAddress = this.userInput.text.toLowerCase();
 
@@ -91,7 +91,7 @@ class EmailCapture {
 		});
 
         // RETURN
-        return await user.prompt("You entered: " + emailAddress + "\n\nWe'll email you with more information soon!");
+        return await user.prompt("Hello: " + emailAddress + "\n\nKHB Construction will get back to you soon.");
 
 
     }
@@ -106,17 +106,43 @@ class EmailCapture {
             color: { r: 180 / 255, g: 255 / 255, b: 0 / 255, a: 255 / 255 },
             alphaMode: MRE.AlphaMode.Blend
         });
-        // Meshes
-        this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .35, .35, .35);
-        // Create Button
-        this.position = { x: 0.0, y: 0.0, z: 0.0 };
-        this.rotation = MRE.Quaternion.FromEulerAngles(0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians);
-        this.buttonActor = MRE.Actor.Create(this.context, {
-            actor: {
-                name: 'Signup Button',
-                collider: { geometry: { shape: MRE.ColliderType.Auto } },
-                transform: { local: { position: this.position, rotation: this.rotation } },
-                appearance: { materialId: this.buttonMaterial.id, meshId: this.buttonMesh.id }
+
+		/*
+		// Meshes
+		this.buttonMesh = this.assets.createBoxMesh('buttonMesh', .35, .35, .35);
+		
+		// Create Button
+		this.position = { x: 0.0, y: 0.0, z: 0.0 }
+		this.rotation = MRE.Quaternion.FromEulerAngles( 0 * MRE.DegreesToRadians,
+			0 * MRE.DegreesToRadians, 0 * MRE.DegreesToRadians )
+		this.buttonActor = MRE.Actor.Create(this.context, {
+			actor: { 
+				name: 'Signup Button', 
+				collider: { geometry: { shape: MRE.ColliderType.Auto} },
+				transform: { local: { position: this.position, rotation: this.rotation } },
+				appearance: { materialId: this.buttonMaterial.id, meshId: this.buttonMesh.id }
+			}
+		});
+
+		*/
+
+		this.buttonActor = MRE.Actor.CreateFromGltf(new MRE.AssetContainer(this.context),
+		{
+			uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1720909420273075055/garbagemaya.glb`,
+            colliderType: 'box',
+            actor:
+			{
+                name: 'Garbage',
+                transform:
+				{
+                    local:
+					{
+                        position: { x: 0, y: 0, z: 0 },
+                        scale: { x: 0.01, y: 0.01, z: 0.01 },
+                        rotation: {y:0}
+                    }
+                },
+                grabbable: true
             }
         });
         // Add Text Label

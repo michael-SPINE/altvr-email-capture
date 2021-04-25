@@ -22,11 +22,12 @@ dotenv_1.default.config();
 // small delay is introduced allowing time for the debugger to attach before
 // the server starts accepting connections.
 function runApp() {
-    // Start listening for connections, and serve static files.
-    const server = new mixed_reality_extension_sdk_1.WebHost({
-        // baseUrl: 'http://<ngrok-id>.ngrok.io',
-        baseDir: path_1.resolve(__dirname, '../public')
-    });
+	// Start listening for connections, and serve static files.
+	const server = new MRE.WebHost({
+		baseUrl: 'http://ec2-3-131-110-108.us-east-2.compute.amazonaws.com',
+		port: 3902,
+		baseDir: resolvePath(__dirname, '../public')		
+	});
     // Handle new application sessions
     server.adapter.onConnection(context => new app_1.default(context, server.baseUrl));
 }

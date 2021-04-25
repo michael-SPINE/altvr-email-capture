@@ -22,9 +22,10 @@ dotenv.config();
 // the server starts accepting connections.
 function runApp() {
 	// Start listening for connections, and serve static files.
-	const server = new WebHost({
-		// baseUrl: 'http://<ngrok-id>.ngrok.io',
-		baseDir: resolvePath(__dirname, '../public')
+	const server = new MRE.WebHost({
+		baseUrl: 'http://ec2-3-131-110-108.us-east-2.compute.amazonaws.com',
+		port: 3902,
+		baseDir: resolvePath(__dirname, '../public')		
 	});
 
 	// Handle new application sessions
